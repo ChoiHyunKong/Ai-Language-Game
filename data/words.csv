@@ -1,0 +1,61 @@
+id,word_ko,word_en,word_jp,meaning_ko,meaning_en,meaning_jp,sentence_ko,sentence_en,sentence_jp,difficulty,category
+1,인공지능,Artificial Intelligence,人工知能,인간의 학습 능력을 모방한 컴퓨터 시스템,A computer system that mimics human learning capabilities,人間の学習能力を模倣するコンピュータシステム,___은 현대 기술의 핵심입니다.,___ is the core of modern technology.,___は現代技術の核心です。,2,ai_basic
+2,머신러닝,Machine Learning,機械学習,데이터를 통해 스스로 학습하는 알고리즘,An algorithm that learns on its own through data,データを通じて自ら学習するアルゴリズム,___을 활용하여 예측 모델을 만듭니다.,We create prediction models using ___.,___を活用して予測モデルを作ります。,3,ai_basic
+3,딥러닝,Deep Learning,ディープラーニング,여러 층의 신경망을 사용하는 학습 방법,A learning method using multiple layers of neural networks,複数層のニューラルネットワークを使用する学習方法,___은 이미지 인식에 뛰어납니다.,___ excels at image recognition.,___は画像認識に優れています。,3,ai_basic
+4,신경망,Neural Network,ニューラルネットワーク,뇌의 뉴런 구조를 모방한 컴퓨팅 시스템,A computing system that mimics the brain's neuron structure,脳のニューロン構造を模倣したコンピューティングシステム,___은 패턴 인식에 사용됩니다.,___ is used for pattern recognition.,___はパターン認識に使用されます。,4,ai_model
+5,자연어처리,Natural Language Processing,自然言語処理,컴퓨터가 인간의 언어를 이해하는 기술,Technology for computers to understand human language,コンピュータが人間の言語を理解する技術,챗봇은 ___를 기반으로 작동합니다.,Chatbots operate based on ___.,チャットボットは___を基盤に動作します。,4,ai_nlp
+6,챗봇,Chatbot,チャットボット,대화형 인공지능 프로그램,An interactive AI program,対話型人工知能プログラム,___이 고객 문의에 자동 응답합니다.,The ___ automatically responds to customer inquiries.,___が顧客からの問い合わせに自動応答します。,2,ai_application
+7,프롬프트,Prompt,プロンプト,AI에게 주는 명령이나 질문,A command or question given to AI,AIに与える命令や質問,좋은 ___를 작성하면 더 나은 결과를 얻습니다.,Writing a good ___ yields better results.,良い___を作成するとより良い結果が得られます。,2,ai_usage
+8,생성형AI,Generative AI,生成AI,새로운 콘텐츠를 만들어내는 인공지능,AI that creates new content,新しいコンテンツを生み出す人工知能,___가 이미지와 텍스트를 생성합니다.,___ generates images and text.,___が画像とテキストを生成します。,3,ai_type
+9,대규모언어모델,Large Language Model,大規模言語モデル,방대한 텍스트로 학습된 AI 모델,An AI model trained on vast amounts of text,膨大なテキストで学習されたAIモデル,ChatGPT는 ___의 대표적인 예입니다.,ChatGPT is a prime example of ___.,ChatGPTは___の代表的な例です。,4,ai_model
+10,파인튜닝,Fine-tuning,ファインチューニング,사전 학습된 모델을 특정 작업에 맞게 조정,Adjusting a pre-trained model for a specific task,事前学習されたモデルを特定のタスクに合わせて調整,___을 통해 모델 성능을 향상시킵니다.,We improve model performance through ___.,___を通じてモデルの性能を向上させます。,5,ai_training
+11,토큰,Token,トークン,AI가 처리하는 텍스트의 기본 단위,The basic unit of text that AI processes,AIが処理するテキストの基本単位,긴 문장은 많은 ___을 소모합니다.,Long sentences consume many ___.,長い文章は多くの___を消費します。,3,ai_concept
+12,임베딩,Embedding,エンベディング,텍스트를 숫자 벡터로 변환하는 방법,A method of converting text into numerical vectors,テキストを数値ベクトルに変換する方法,___은 의미를 수치로 표현합니다.,___ expresses meaning numerically.,___は意味を数値で表現します。,5,ai_concept
+13,추론,Inference,推論,학습된 모델로 새로운 데이터를 예측하는 과정,The process of predicting new data with a trained model,学習されたモデルで新しいデータを予測するプロセス,___에는 GPU가 필요합니다.,___ requires a GPU.,___にはGPUが必要です。,4,ai_process
+14,학습데이터,Training Data,学習データ,AI 모델을 교육하는데 사용되는 정보,Information used to train AI models,AIモデルを教育するのに使用される情報,좋은 ___가 좋은 모델을 만듭니다.,Good ___ makes good models.,良い___が良いモデルを作ります。,3,ai_data
+15,검증,Validation,検証,모델의 성능을 평가하는 과정,The process of evaluating model performance,モデルの性能を評価するプロセス,___을 통해 과적합을 방지합니다.,We prevent overfitting through ___.,___を通じて過学習を防ぎます。,4,ai_process
+16,과적합,Overfitting,過学習,모델이 학습 데이터에만 너무 최적화됨,When a model is too optimized for training data only,モデルが学習データのみに最適化されすぎること,___이 발생하면 일반화 성능이 떨어집니다.,When ___ occurs generalization performance drops.,___が発生すると汎化性能が低下します。,5,ai_problem
+17,하이퍼파라미터,Hyperparameter,ハイパーパラメータ,학습 전에 설정하는 모델의 설정값,Model settings configured before training,学習前に設定するモデルの設定値,___를 조정하여 성능을 최적화합니다.,We optimize performance by adjusting ___.,___を調整して性能を最適化します。,5,ai_training
+18,데이터셋,Dataset,データセット,학습에 사용되는 데이터 모음,A collection of data used for training,学習に使用されるデータの集まり,공개 ___을 활용하여 연구합니다.,We research using public ___.,公開___を活用して研究します。,2,ai_data
+19,모델,Model,モデル,데이터 패턴을 학습한 수학적 표현,A mathematical representation that learned data patterns,データパターンを学習した数学的表現,이 ___은 96% 정확도를 달성했습니다.,This ___ achieved 96% accuracy.,この___は96%の精度を達成しました。,2,ai_basic
+20,알고리즘,Algorithm,アルゴリズム,문제를 해결하기 위한 단계별 절차,Step-by-step procedures for solving problems,問題を解決するための段階的な手順,효율적인 ___이 성능을 결정합니다.,An efficient ___ determines performance.,効率的な___が性能を決定します。,3,ai_basic
+21,GPU,GPU,GPU,그래픽 처리에 특화된 프로세서,A processor specialized for graphics processing,グラフィックス処理に特化したプロセッサ,AI 학습에는 강력한 ___가 필요합니다.,Powerful ___ is needed for AI training.,AI学習には強力な___が必要です。,2,dev_hardware
+22,클라우드,Cloud,クラウド,인터넷을 통해 제공되는 컴퓨팅 서비스,Computing services provided over the internet,インターネットを通じて提供されるコンピューティングサービス,___에서 AI 모델을 실행합니다.,We run AI models in the ___.,___でAIモデルを実行します。,2,dev_infra
+23,API,API,API,프로그램 간 통신을 위한 인터페이스,An interface for communication between programs,プログラム間の通信のためのインターフェース,___를 호출하여 AI 기능을 사용합니다.,We use AI features by calling the ___.,___を呼び出してAI機能を使用します。,3,dev_basic
+24,컴퓨터비전,Computer Vision,コンピュータビジョン,컴퓨터가 이미지를 이해하는 기술,Technology for computers to understand images,コンピュータが画像を理解する技術,___으로 얼굴을 인식합니다.,We recognize faces with ___.,___で顔を認識します。,4,ai_field
+25,음성인식,Speech Recognition,音声認識,음성을 텍스트로 변환하는 기술,Technology that converts speech to text,音声をテキストに変換する技術,___이 회의 내용을 기록합니다.,___ records meeting contents.,___が会議の内容を記録します。,3,ai_field
+26,텍스트마이닝,Text Mining,テキストマイニング,텍스트에서 유용한 정보를 추출하는 기술,Technology to extract useful information from text,テキストから有用な情報を抽出する技術,___으로 고객 리뷰를 분석합니다.,We analyze customer reviews with ___.,___で顧客レビューを分析します。,4,ai_technique
+27,강화학습,Reinforcement Learning,強化学習,보상을 통해 최적의 행동을 학습하는 방법,A method of learning optimal actions through rewards,報酬を通じて最適な行動を学習する方法,___으로 게임 AI를 개발합니다.,We develop game AI with ___.,___でゲームAIを開発します。,5,ai_method
+28,지도학습,Supervised Learning,教師あり学習,정답이 있는 데이터로 학습하는 방법,A method of learning from labeled data,正解があるデータで学習する方法,___은 분류 문제에 적합합니다.,___ is suitable for classification problems.,___は分類問題に適しています。,4,ai_method
+29,비지도학습,Unsupervised Learning,教師なし学習,정답 없이 패턴을 찾는 학습 방법,A learning method that finds patterns without answers,正解なしにパターンを見つける学習方法,___으로 고객을 그룹화합니다.,We group customers with ___.,___で顧客をグループ化します。,4,ai_method
+30,전이학습,Transfer Learning,転移学習,한 분야의 학습을 다른 분야에 적용,Applying learning from one domain to another,一つの分野の学習を他の分野に適用,___으로 학습 시간을 단축합니다.,We reduce training time with ___.,___で学習時間を短縮します。,5,ai_method
+31,프레임워크,Framework,フレームワーク,소프트웨어 개발을 위한 기본 구조,A basic structure for software development,ソフトウェア開発のための基本構造,TensorFlow는 AI ___입니다.,TensorFlow is an AI ___.,TensorFlowはAI___です。,3,dev_basic
+32,라이브러리,Library,ライブラリ,재사용 가능한 코드 모음,A collection of reusable code,再利用可能なコードの集まり,NumPy는 수치 계산 ___입니다.,NumPy is a numerical computing ___.,NumPyは数値計算___です。,2,dev_basic
+33,버전관리,Version Control,バージョン管理,코드 변경 이력을 추적하는 시스템,A system that tracks code change history,コード変更履歴を追跡するシステム,___로 협업을 효율화합니다.,We streamline collaboration with ___.,___で協業を効率化します。,3,dev_tool
+34,디버깅,Debugging,デバッグ,코드의 오류를 찾아 수정하는 과정,The process of finding and fixing code errors,コードのエラーを見つけて修正するプロセス,___은 개발의 중요한 부분입니다.,___ is an important part of development.,___は開発の重要な部分です。,2,dev_process
+35,배포,Deployment,デプロイ,소프트웨어를 운영 환경에 적용하는 것,Applying software to a production environment,ソフトウェアを本番環境に適用すること,___후에 모니터링이 필요합니다.,Monitoring is needed after ___.,___後にモニタリングが必要です。,3,dev_process
+36,컨테이너,Container,コンテナ,애플리케이션을 격리하여 실행하는 기술,Technology to run applications in isolation,アプリケーションを隔離して実行する技術,Docker는 ___ 기술의 표준입니다.,Docker is the standard for ___ technology.,Dockerは___技術の標準です。,4,dev_infra
+37,마이크로서비스,Microservice,マイクロサービス,작은 단위로 분리된 서비스 아키텍처,An architecture of services separated into small units,小さな単位に分離されたサービスアーキテクチャ,___로 확장성을 높입니다.,We increase scalability with ___.,___で拡張性を高めます。,5,dev_architecture
+38,백엔드,Backend,バックエンド,서버 측 로직을 처리하는 부분,The part that handles server-side logic,サーバー側のロジックを処理する部分,___개발자가 API를 만듭니다.,___ developers create APIs.,___開発者がAPIを作ります。,2,dev_basic
+39,프론트엔드,Frontend,フロントエンド,사용자가 보는 화면을 구성하는 부분,The part that composes what users see,ユーザーが見る画面を構成する部分,___는 사용자 경험을 담당합니다.,___ is responsible for user experience.,___はユーザー体験を担当します。,2,dev_basic
+40,데이터베이스,Database,データベース,데이터를 체계적으로 저장하는 시스템,A system that systematically stores data,データを体系的に保存するシステム,___에서 정보를 조회합니다.,We query information from the ___.,___から情報を照会します。,2,dev_basic
+41,트랜스포머,Transformer,トランスフォーマー,어텐션 메커니즘 기반의 AI 모델 구조,An AI model structure based on attention mechanism,アテンションメカニズムに基づくAIモデル構造,GPT는 ___ 아키텍처를 사용합니다.,GPT uses the ___ architecture.,GPTは___アーキテクチャを使用します。,5,ai_model
+42,어텐션,Attention,アテンション,중요한 정보에 집중하는 메커니즘,A mechanism that focuses on important information,重要な情報に集中するメカニズム,___메커니즘이 번역 품질을 높입니다.,The ___ mechanism improves translation quality.,___メカニズムが翻訳品質を高めます。,5,ai_concept
+43,파라미터,Parameter,パラメータ,모델이 학습하는 조절 가능한 값,Adjustable values that the model learns,モデルが学習する調整可能な値,GPT-4는 수조 개의 ___를 가집니다.,GPT-4 has trillions of ___.,GPT-4は数兆の___を持っています。,4,ai_concept
+44,에포크,Epoch,エポック,전체 데이터셋을 한 번 학습하는 단위,A unit of training through the entire dataset,全データセットを一回学習する単位,10 ___동안 학습을 진행합니다.,We train for 10 ___.,10___の間学習を進めます。,4,ai_training
+45,배치,Batch,バッチ,한 번에 처리하는 데이터 묶음,A bundle of data processed at once,一度に処理するデータの束,___크기가 학습 속도에 영향을 줍니다.,___ size affects training speed.,___サイズが学習速度に影響します。,3,ai_training
+46,손실함수,Loss Function,損失関数,모델 예측의 오차를 계산하는 함수,A function that calculates prediction errors,モデル予測の誤差を計算する関数,___를 최소화하도록 학습합니다.,We train to minimize the ___.,___を最小化するように学習します。,5,ai_concept
+47,최적화,Optimization,最適化,최선의 결과를 찾는 과정,The process of finding the best results,最善の結果を見つけるプロセス,___알고리즘이 학습을 가속화합니다.,___ algorithms accelerate learning.,___アルゴリズムが学習を加速します。,4,ai_process
+48,편향,Bias,バイアス,데이터나 모델의 치우침,Skewness in data or models,データやモデルの偏り,AI의 ___문제를 해결해야 합니다.,We need to solve AI ___ problems.,AIの___問題を解決する必要があります。,4,ai_problem
+49,레이블,Label,ラベル,데이터에 붙이는 정답 태그,Answer tags attached to data,データに付ける正解タグ,___이 있는 데이터가 필요합니다.,Data with ___ is needed.,___のあるデータが必要です。,3,ai_data
+50,전처리,Preprocessing,前処理,데이터를 학습에 적합하게 가공하는 과정,The process of preparing data for training,データを学習に適するように加工するプロセス,___가 모델 성능에 큰 영향을 미칩니다.,___ greatly affects model performance.,___がモデル性能に大きく影響します。,4,ai_process
+51,멀티모달,Multimodal,マルチモーダル,여러 종류의 데이터를 함께 처리하는 방식,A method of processing multiple types of data together,複数種類のデータを一緒に処理する方式,GPT-4는 ___AI입니다.,GPT-4 is a ___ AI.,GPT-4は___AIです。,4,ai_type
+52,파이썬,Python,Python,AI 개발에 널리 사용되는 프로그래밍 언어,A programming language widely used in AI development,AI開発に広く使用されるプログラミング言語,___은 AI 개발의 표준 언어입니다.,___ is the standard language for AI development.,___はAI開発の標準言語です。,1,dev_language
+53,자바스크립트,JavaScript,JavaScript,웹 개발에 사용되는 프로그래밍 언어,A programming language used in web development,Web開発に使用されるプログラミング言語,___로 웹 애플리케이션을 만듭니다.,We build web applications with ___.,___でWebアプリケーションを作ります。,2,dev_language
+54,오픈소스,Open Source,オープンソース,소스 코드가 공개된 소프트웨어,Software with publicly available source code,ソースコードが公開されたソフトウェア,많은 AI 도구가 ___입니다.,Many AI tools are ___.,多くのAIツールは___です。,2,dev_concept
+55,클러스터링,Clustering,クラスタリング,유사한 데이터를 그룹으로 묶는 기법,A technique for grouping similar data,類似データをグループにまとめる技法,___으로 고객을 세분화합니다.,We segment customers with ___.,___で顧客をセグメント化します。,4,ai_technique
+56,분류,Classification,分類,데이터를 카테고리로 나누는 작업,The task of dividing data into categories,データをカテゴリに分ける作業,스팸 필터는 ___문제입니다.,Spam filtering is a ___ problem.,スパムフィルターは___問題です。,3,ai_technique
+57,회귀,Regression,回帰,연속적인 값을 예측하는 작업,The task of predicting continuous values,連続的な値を予測する作業,주가 예측은 ___문제입니다.,Stock prediction is a ___ problem.,株価予測は___問題です。,4,ai_technique
+58,정확도,Accuracy,精度,올바른 예측의 비율,The ratio of correct predictions,正しい予測の割合,모델의 ___가 98%입니다.,The model's ___ is 98%.,モデルの___は98%です。,3,ai_metric
+59,재현율,Recall,再現率,실제 양성 중 올바르게 예측한 비율,The ratio correctly predicted among actual positives,実際の陽性の中で正しく予測した割合,의료 AI는 높은 ___가 중요합니다.,High ___ is important for medical AI.,医療AIには高い___が重要です。,5,ai_metric
+60,정밀도,Precision,精度,예측한 양성 중 실제 양성의 비율,The ratio of actual positives among predicted positives,予測した陽性の中で実際の陽性の割合,스팸 필터는 높은 ___가 필요합니다.,Spam filters need high ___.,スパムフィルターには高い___が必要です。,5,ai_metric
