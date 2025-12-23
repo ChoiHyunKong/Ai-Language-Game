@@ -75,6 +75,8 @@ body {
     height: 100%;
     overflow: hidden;
     z-index: 0;
+    pointer-events: none;
+    /* 🆕 클릭 이벤트 통과 */
 }
 
 .bg-gradient {
@@ -205,6 +207,10 @@ body {
     height: 100%;
     padding: 2rem;
     text-align: center;
+    position: relative;
+    /* 🆕 z-index 적용을 위해 */
+    z-index: 10;
+    /* 🆕 배경 위에 표시 */
 }
 
 .game-title {
