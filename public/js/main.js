@@ -1,5 +1,5 @@
 /**
- * AI 지식 게임 - 메인 진입점 (2차 개선 버전)
+ * AI 지식 게임 - 메인 진입점 (사운드 및 배경 개선 버전)
  */
 
 import { LanguageManager } from './data/LanguageManager.js';
@@ -7,6 +7,7 @@ import { CSVLoader } from './data/CSVLoader.js';
 import { GameEngine } from './game/GameEngine.js';
 import { ScreenManager } from './ui/ScreenManager.js';
 import { ScoreManager } from './ui/ScoreManager.js';
+import { SoundManager } from './ui/SoundManager.js';
 
 class App {
   constructor() {
@@ -15,6 +16,7 @@ class App {
     this.gameEngine = null;
     this.screenManager = new ScreenManager();
     this.scoreManager = new ScoreManager();
+    this.soundManager = new SoundManager(); // 🆕 사운드 매니저
 
     this.settings = {
       mode: 'word',
@@ -22,7 +24,6 @@ class App {
       difficulty: 3
     };
 
-    // 마지막 게임 결과 저장
     this.lastResult = null;
   }
 
@@ -39,6 +40,7 @@ class App {
 
       this.bindEvents();
       this.createToastElement();
+      this.createParticles(); // 🆕 파티클 생성
 
       document.getElementById('loadingScreen').classList.add('hidden');
 
@@ -49,7 +51,27 @@ class App {
     }
   }
 
-  // 🆕 토스트 알림 요소 생성
+  // 🆕 배경 파티클 생성
+  createParticles() {
+    const container = document.getElementById('bgParticles');
+    if (!container) return;
+
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 15}s`;
+      particle.style.animationDuration = `${10 + Math.random() * 10}s`;
+
+      // 색상 변화
+      const colors = ['#a855f7', '#06b6d4', '#ec4899', '#3b82f6'];
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.boxShadow = `0 0 10px ${particle.style.background}`;
+
+      container.appendChild(particle);
+    }
+  }
+
   createToastElement() {
     const toast = document.createElement('div');
     toast.id = 'toast';
@@ -58,31 +80,64 @@ class App {
   }
 
   bindEvents() {
-    // 메뉴 이벤트
-    document.getElementById('startBtn').addEventListener('click', () => this.startGame());
-    document.getElementById('rankingBtn').addEventListener('click', () => this.showRanking());
+    // 메뉴 이벤트 - 사운드 초기화
+    document.getElementById('startBtn').addEventListener('click', () => {
+      this.soundManager.init(); // 첫 클릭 시 사운드 초기화
+      this.soundManager.playStart();
+      this.startGame();
+    });
+
+    document.getElementById('rankingBtn').addEventListener('click', () => {
+      this.soundManager.init();
+      this.soundManager.playClick();
+      this.showRanking();
+    });
+
+    // 🆕 음소거 버튼
+    document.getElementById('muteBtn').addEventListener('click', () => {
+      this.soundManager.init();
+      const isMuted = this.soundManager.toggleMute();
+      document.getElementById('muteIcon').textContent = isMuted ? '🔇' : '🔊';
+      document.getElementById('muteBtn').classList.toggle('muted', isMuted);
+    });
 
     // 설정 변경
     document.getElementById('gameModeSelect').addEventListener('change', (e) => {
+      this.soundManager.playClick();
       this.settings.mode = e.target.value;
     });
 
     document.getElementById('languageSelect').addEventListener('change', (e) => {
+      this.soundManager.playClick();
       this.settings.language = e.target.value;
       this.languageManager.setLanguage(e.target.value);
     });
 
     document.getElementById('difficultySelect').addEventListener('change', (e) => {
+      this.soundManager.playClick();
       this.settings.difficulty = parseInt(e.target.value);
     });
 
     // 게임 이벤트
-    document.getElementById('pauseBtn').addEventListener('click', () => this.pauseGame());
-    document.getElementById('resumeBtn').addEventListener('click', () => this.resumeGame());
-    document.getElementById('quitBtn').addEventListener('click', () => this.quitGame());
+    document.getElementById('pauseBtn').addEventListener('click', () => {
+      this.soundManager.playClick();
+      this.pauseGame();
+    });
 
-    // 🆕 게임 오버 후 결과 보기 버튼
-    document.getElementById('finishGameBtn').addEventListener('click', () => this.showResultScreen());
+    document.getElementById('resumeBtn').addEventListener('click', () => {
+      this.soundManager.playClick();
+      this.resumeGame();
+    });
+
+    document.getElementById('quitBtn').addEventListener('click', () => {
+      this.soundManager.playClick();
+      this.quitGame();
+    });
+
+    document.getElementById('finishGameBtn').addEventListener('click', () => {
+      this.soundManager.playClick();
+      this.showResultScreen();
+    });
 
     // 입력 이벤트
     document.getElementById('wordInput').addEventListener('keydown', (e) => {
@@ -92,17 +147,29 @@ class App {
     });
 
     // 결과 화면 이벤트
-    document.getElementById('retryBtn').addEventListener('click', () => this.startGame());
-    document.getElementById('menuBtn').addEventListener('click', () => this.showMenu());
-    document.getElementById('submitScoreBtn').addEventListener('click', () => this.submitScore());
+    document.getElementById('retryBtn').addEventListener('click', () => {
+      this.soundManager.playStart();
+      this.startGame();
+    });
 
-    // 랭킹 모달 닫기
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      this.soundManager.playClick();
+      this.showMenu();
+    });
+
+    document.getElementById('submitScoreBtn').addEventListener('click', () => {
+      this.soundManager.playClick();
+      this.submitScore();
+    });
+
+    // 모달 닫기
     document.getElementById('closeRankingBtn').addEventListener('click', () => {
+      this.soundManager.playClick();
       document.getElementById('rankingModal').classList.add('hidden');
     });
 
-    // 단어 설명 모달 닫기
     document.getElementById('closeDetailBtn').addEventListener('click', () => {
+      this.soundManager.playClick();
       document.getElementById('wordDetailModal').classList.add('hidden');
     });
 
@@ -112,6 +179,7 @@ class App {
     };
 
     this.gameEngine.onComboMilestone = (combo, effect) => {
+      this.soundManager.playCombo(Math.floor(combo / 10) + 1);
       this.showComboEffect(effect);
     };
 
@@ -119,27 +187,31 @@ class App {
       document.getElementById('lifeDisplay').textContent = life;
     };
 
-    // 🆕 게임 오버 시 화면 유지
     this.gameEngine.onGameOver = (result) => {
+      this.soundManager.playGameOver();
       this.lastResult = result;
       this.showGameOverOverlay();
     };
 
     // 단어 완료 콜백
     this.gameEngine.onWordCompleted = (wordData) => {
+      if (wordData.isGolden) {
+        this.soundManager.playGolden();
+      } else {
+        this.soundManager.playCorrect();
+      }
       this.addWordToHistory(wordData);
     };
 
     // 속도 증가 콜백
     this.gameEngine.onSpeedUp = (level) => {
+      this.soundManager.playSpeedUp();
       this.showSpeedUp(level);
     };
   }
 
   startGame() {
-    // 게임 오버 오버레이 숨기기
     document.getElementById('gameOverOverlay').classList.add('hidden');
-
     this.screenManager.showScreen('gameScreen');
 
     this.gameEngine.setMode(this.settings.mode);
@@ -157,6 +229,12 @@ class App {
     document.getElementById('wordList').innerHTML = '';
     document.getElementById('wordCount').textContent = '0';
 
+    // 인포 마크 초기화
+    const panelInfo = document.getElementById('panelInfo');
+    panelInfo.textContent = '💡 단어를 클릭하면 설명을 볼 수 있어요!';
+    panelInfo.style.color = '';
+    panelInfo.style.background = '';
+
     document.getElementById('wordInput').focus();
 
     this.gameEngine.start();
@@ -173,6 +251,7 @@ class App {
         input.classList.add('correct');
         setTimeout(() => input.classList.remove('correct'), 300);
       } else {
+        this.soundManager.playWrong(); // 🆕 오답 효과음
         input.classList.add('wrong');
         setTimeout(() => input.classList.remove('wrong'), 300);
       }
@@ -209,7 +288,6 @@ class App {
     }, 1000);
   }
 
-  // 🆕 단어 기록에 추가 (아래에서부터 쌓기)
   addWordToHistory(wordData) {
     const wordList = document.getElementById('wordList');
     const wordCount = document.getElementById('wordCount');
@@ -221,19 +299,16 @@ class App {
       <span class="score">+${wordData.score}</span>
     `;
 
-    // 클릭 시 설명 표시
     item.addEventListener('click', () => {
+      this.soundManager.playClick();
       this.showWordDetail(wordData.word, wordData.meaning);
     });
 
-    // 🆕 아래에서부터 쌓기 (flex-direction: column-reverse로 인해 appendChild가 아래로 감)
     wordList.appendChild(item);
 
-    // 카운트 업데이트
     const count = parseInt(wordCount.textContent) + 1;
     wordCount.textContent = count;
 
-    // 스크롤 최상단으로 (실제로는 최하단 단어가 보임)
     wordList.scrollTop = 0;
   }
 
@@ -261,19 +336,16 @@ class App {
     this.showMenu();
   }
 
-  // 🆕 게임 오버 오버레이 표시 (화면 유지)
   showGameOverOverlay() {
     document.getElementById('wordInput').disabled = true;
     document.getElementById('gameOverOverlay').classList.remove('hidden');
 
-    // 인포 마크 강조
     const panelInfo = document.getElementById('panelInfo');
     panelInfo.textContent = '👆 단어를 클릭해서 학습하세요!';
     panelInfo.style.color = '#22c55e';
     panelInfo.style.background = 'rgba(34, 197, 94, 0.15)';
   }
 
-  // 🆕 결과 화면으로 이동
   showResultScreen() {
     if (this.lastResult) {
       document.getElementById('finalScore').textContent = this.lastResult.score.toLocaleString();
@@ -286,7 +358,6 @@ class App {
     this.screenManager.showScreen('resultScreen');
   }
 
-  // 🆕 토스트 알림 표시
   showToast(message, duration = 2000) {
     const toast = document.getElementById('toast');
     toast.textContent = message;
@@ -297,7 +368,6 @@ class App {
     }, duration);
   }
 
-  // 🆕 점수 저장 후 알림 + 랭킹 표시
   submitScore() {
     const playerName = document.getElementById('playerName').value.trim() || 'Player';
     const result = this.gameEngine.getResult();
@@ -313,10 +383,8 @@ class App {
       date: new Date().toISOString()
     });
 
-    // 토스트 알림 표시
     this.showToast(`✅ 기록이 저장되었습니다! (${rank}위)`);
 
-    // 1.5초 후 랭킹 모달 표시
     setTimeout(() => {
       this.showRanking();
     }, 1500);

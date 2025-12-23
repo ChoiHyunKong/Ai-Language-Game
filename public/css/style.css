@@ -65,6 +65,136 @@ body {
 }
 
 /* ===================================
+   🆕 애니메이션 배경
+   =================================== */
+.animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.bg-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-tertiary) 100%);
+    animation: gradientShift 10s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.bg-grid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(50px);
+    }
+}
+
+.bg-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--neon-purple);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-purple);
+    animation: particleFloat 15s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+@keyframes particleFloat {
+
+    0%,
+    100% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100px) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* ===================================
+   🆕 음소거 버튼
+   =================================== */
+.mute-btn {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 2px solid var(--neon-purple);
+    cursor: pointer;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.mute-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+}
+
+.mute-btn.muted {
+    border-color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* ===================================
    메뉴 화면
    =================================== */
 .menu-container {

@@ -18,6 +18,18 @@
 <body>
     <!-- 메인 메뉴 화면 -->
     <div id="menuScreen" class="screen active">
+        <!-- 🆕 애니메이션 배경 -->
+        <div class="animated-background">
+            <div class="bg-gradient"></div>
+            <div class="bg-particles" id="bgParticles"></div>
+            <div class="bg-grid"></div>
+        </div>
+
+        <!-- 🆕 음소거 토글 버튼 (전역) -->
+        <button id="muteBtn" class="mute-btn" title="사운드 켜기/끄기">
+            <span id="muteIcon">🔊</span>
+        </button>
+
         <div class="menu-container">
             <h1 class="game-title">AI 지식 게임</h1>
             <p class="game-subtitle">AI 용어를 배우는 타자 게임</p>
