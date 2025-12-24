@@ -44,6 +44,10 @@ export class GameEngine {
         this.onWordCompleted = null;
         this.onSpeedUp = null;
 
+        this.specialAbilityTimer = null;
+        this.isSlowMotion = false;
+        this.isFeverMode = false;
+
         this.resizeCanvas();
         window.addEventListener('resize', () => this.resizeCanvas());
     }
@@ -62,6 +66,15 @@ export class GameEngine {
         this.difficulty = difficulty;
         this.config.spawnInterval = 3000 - (difficulty * 300);
         this.config.baseFallSpeed = 0.3 + (difficulty * 0.15);
+
+        const maxWordsByDifficulty = {
+            1: 3,
+            2: 5,
+            3: 7,
+            4: 9,
+            5: 12
+        };
+        this.config.maxWords = maxWordsByDifficulty[difficulty] || 5;
     }
 
     start() {
@@ -152,10 +165,28 @@ export class GameEngine {
                 break;
         }
 
+        const itemRoll = Math.random() * 100;
+        let itemType = 'normal';
+        let itemChances = this.getItemChancesByDifficulty();
+
+        if (itemRoll < itemChances.life) {
+            itemType = 'life';
+        } else if (itemRoll < itemChances.life + itemChances.bomb) {
+            itemType = 'bomb';
+        } else if (itemRoll < itemChances.life + itemChances.bomb + itemChances.golden) {
+            itemType = 'golden';
+        }
+
+        if (itemType === 'life') {
+            display = '💖 ' + display;
+        } else if (itemType === 'bomb') {
+            display = '💣 ' + display;
+        }
+
         this.ctx.font = '18px "Noto Sans KR"';
         const textWidth = this.ctx.measureText(display).width;
 
-        const isGolden = Math.random() < this.config.goldenWordChance;
+        const isGolden = itemType === 'golden';
 
         const currentSpeed = (this.config.baseFallSpeed + (data.difficulty * 0.1)) *
             (1 + (this.speedLevel - 1) * 0.5);
@@ -172,9 +203,21 @@ export class GameEngine {
             speed: currentSpeed,
             color: isGolden ? '#fbbf24' : this.getDifficultyColor(data.difficulty),
             isGolden,
+            itemType,
             createdAt: Date.now(),
             removed: false
         };
+    }
+
+    getItemChancesByDifficulty() {
+        const chances = {
+            1: { life: 5, bomb: 8, golden: 5 },
+            2: { life: 4, bomb: 8, golden: 5 },
+            3: { life: 3, bomb: 8, golden: 7 },
+            4: { life: 2, bomb: 10, golden: 8 },
+            5: { life: 1, bomb: 12, golden: 10 }
+        };
+        return chances[this.difficulty] || chances[3];
     }
 
     getDifficultyColor(difficulty) {
@@ -307,22 +350,59 @@ export class GameEngine {
             this.maxCombo = this.combo;
         }
 
-        const multiplier = word.isGolden ? 2 : 1;
-        const baseScore = word.difficulty * 10 * multiplier;
-        const comboBonus = Math.floor(this.combo * 5);
-        const speedBonus = this.calculateSpeedBonus(word);
+        let scoreChange = 0;
 
-        this.score += baseScore + comboBonus + speedBonus;
+        if (word.itemType === 'bomb') {
+            scoreChange = -500;
+            this.score = Math.max(0, this.score - 500);
+            this.showMilestonePopup('BOMB -500', '#ef4444');
+        } else if (word.itemType === 'life') {
+            if (this.life < 5) {
+                this.life++;
+                this.onLifeLost?.(this.life);
+            }
+            this.showMilestonePopup('LIFE +1', '#22c55e');
+
+            const baseScore = word.difficulty * 10;
+            scoreChange = baseScore;
+            this.score += baseScore;
+        } else {
+            let multiplier = word.isGolden ? 2 : 1;
+
+            if (this.difficulty === 3 && this.combo >= 10) {
+                multiplier *= 2;
+            }
+
+            if (this.difficulty === 5 && this.isFeverMode) {
+                multiplier *= 3;
+            } else if (this.difficulty === 5 && Math.random() < 0.1) {
+                multiplier *= 5;
+                this.showMilestonePopup('CRITICAL x5!', '#fbbf24');
+            }
+
+            const baseScore = word.difficulty * 10 * multiplier;
+            const comboBonus = Math.floor(this.combo * 5);
+            const speedBonus = this.calculateSpeedBonus(word);
+
+            scoreChange = baseScore + comboBonus + speedBonus;
+            this.score += scoreChange;
+        }
 
         this.completedWords.push({
             word: word.answer,
             meaning: word.meaning,
             display: word.display,
             isGolden: word.isGolden,
-            score: baseScore + comboBonus + speedBonus
+            itemType: word.itemType,
+            score: scoreChange
         });
 
         this.onWordCompleted?.(this.completedWords[this.completedWords.length - 1]);
+
+        if (this.correctWords % 10 === 0) {
+            this.score += 1000;
+            this.showMilestonePopup('MILESTONE +1000!', '#a855f7');
+        }
 
         this.wordsUntilSpeedUp--;
         if (this.wordsUntilSpeedUp <= 0) {
@@ -337,6 +417,31 @@ export class GameEngine {
 
         this.onScoreUpdate?.(this.score, this.combo);
         this.checkComboMilestone();
+    }
+
+    showMilestonePopup(text, color) {
+        const popup = document.createElement('div');
+        popup.textContent = text;
+        popup.style.cssText = `
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: ${color};
+            text-shadow: 0 0 20px ${color}, 0 0 40px ${color};
+            pointer-events: none;
+            z-index: 100;
+            animation: milestonePopup 1.5s ease-out forwards;
+        `;
+
+        const gameArea = document.querySelector('.game-area');
+        if (gameArea) {
+            gameArea.appendChild(popup);
+            setTimeout(() => popup.remove(), 1500);
+        }
     }
 
     calculateSpeedBonus(word) {
@@ -360,6 +465,20 @@ export class GameEngine {
         if (milestones[this.combo]) {
             this.onComboMilestone?.(this.combo, milestones[this.combo]);
         }
+
+        if (this.difficulty === 5 && this.combo >= 15 && !this.isFeverMode) {
+            this.activateFeverMode();
+        }
+    }
+
+    activateFeverMode() {
+        this.isFeverMode = true;
+        this.showMilestonePopup('FEVER MODE!', '#ff00ff');
+
+        setTimeout(() => {
+            this.isFeverMode = false;
+            this.showMilestonePopup('FEVER END', '#888');
+        }, 20000);
     }
 
     onWordMissed(word) {
