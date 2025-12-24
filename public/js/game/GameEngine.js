@@ -47,6 +47,8 @@ export class GameEngine {
         this.specialAbilityTimer = null;
         this.isSlowMotion = false;
         this.isFeverMode = false;
+        this.comboMultiplier = 1.0;
+        this.isFeverTime = false;
 
         this.resizeCanvas();
         window.addEventListener('resize', () => this.resizeCanvas());
@@ -328,14 +330,12 @@ export class GameEngine {
         } else {
             this.wrongInputs++;
             this.combo = 0;
-            this.life--;
+            this.comboMultiplier = 1.0;
 
-            this.onLifeLost?.(this.life);
+            this.score = Math.max(0, this.score - 1000);
+            this.showMilestonePopup('WRONG -1000', '#ef4444');
+
             this.onScoreUpdate?.(this.score, this.combo);
-
-            if (this.life <= 0) {
-                this.gameOver();
-            }
 
             return { success: false, word: null };
         }
@@ -348,6 +348,15 @@ export class GameEngine {
 
         if (this.combo > this.maxCombo) {
             this.maxCombo = this.combo;
+        }
+
+        if (this.combo % 10 === 0 && this.combo > 0) {
+            this.comboMultiplier = Math.pow(1.2, Math.floor(this.combo / 10));
+            this.showMilestonePopup(`COMBO x${this.comboMultiplier.toFixed(2)}!`, '#3b82f6');
+        }
+
+        if (this.combo === 50 && !this.isFeverTime) {
+            this.activateFeverTime();
         }
 
         let scoreChange = 0;
@@ -363,29 +372,23 @@ export class GameEngine {
             }
             this.showMilestonePopup('LIFE +1', '#22c55e');
 
-            const baseScore = word.difficulty * 10;
+            const baseScore = this.calculateBaseScore(this.difficulty);
             scoreChange = baseScore;
             this.score += baseScore;
         } else {
-            let multiplier = word.isGolden ? 2 : 1;
+            if (this.isFeverTime) {
+                scoreChange = 500;
+                this.score += 500;
+            } else {
+                let baseScore = this.calculateBaseScore(this.difficulty);
 
-            if (this.difficulty === 3 && this.combo >= 10) {
-                multiplier *= 2;
+                if (word.isGolden) {
+                    baseScore *= 2;
+                }
+
+                scoreChange = Math.floor(baseScore * this.comboMultiplier);
+                this.score += scoreChange;
             }
-
-            if (this.difficulty === 5 && this.isFeverMode) {
-                multiplier *= 3;
-            } else if (this.difficulty === 5 && Math.random() < 0.1) {
-                multiplier *= 5;
-                this.showMilestonePopup('CRITICAL x5!', '#fbbf24');
-            }
-
-            const baseScore = word.difficulty * 10 * multiplier;
-            const comboBonus = Math.floor(this.combo * 5);
-            const speedBonus = this.calculateSpeedBonus(word);
-
-            scoreChange = baseScore + comboBonus + speedBonus;
-            this.score += scoreChange;
         }
 
         this.completedWords.push({
@@ -417,6 +420,29 @@ export class GameEngine {
 
         this.onScoreUpdate?.(this.score, this.combo);
         this.checkComboMilestone();
+    }
+
+    calculateBaseScore(difficulty) {
+        const scoreRanges = {
+            1: { min: 10, max: 30 },
+            2: { min: 20, max: 70 },
+            3: { min: 40, max: 100 },
+            4: { min: 50, max: 100 },
+            5: { min: 60, max: 150 }
+        };
+
+        const range = scoreRanges[difficulty] || scoreRanges[3];
+        return Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
+    }
+
+    activateFeverTime() {
+        this.isFeverTime = true;
+        this.showMilestonePopup('FEVER TIME!', '#ff00ff');
+
+        setTimeout(() => {
+            this.isFeverTime = false;
+            this.showMilestonePopup('FEVER END', '#888');
+        }, 10000);
     }
 
     showMilestonePopup(text, color) {
@@ -484,6 +510,7 @@ export class GameEngine {
     onWordMissed(word) {
         word.removed = true;
         this.combo = 0;
+        this.comboMultiplier = 1.0;
         this.life--;
 
         this.onLifeLost?.(this.life);
