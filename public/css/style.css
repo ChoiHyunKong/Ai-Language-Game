@@ -888,11 +888,50 @@ body {
 
 /* 랭킹 모달 */
 .ranking-modal {
-    width: 400px;
+    width: 90%;
+    max-width: 576px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* 난이도 탭 */
+.difficulty-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    flex: 1;
+    min-width: 60px;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    background: rgba(168, 85, 247, 0.1);
+    border-color: var(--neon-purple);
+}
+
+.tab-btn.active {
+    background: var(--neon-purple);
+    color: white;
+    border-color: var(--neon-purple);
+    font-weight: 600;
 }
 
 .ranking-list {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 .ranking-item {
@@ -925,12 +964,65 @@ body {
     font-family: var(--font-display);
     font-size: 1rem;
     color: var(--neon-cyan);
+    margin-right: 0.5rem;
+}
+
+.ranking-item .difficulty {
+    font-size: 0.85rem;
+    color: var(--neon-purple);
+    min-width: 60px;
+    text-align: right;
 }
 
 .ranking-empty {
     text-align: center;
     padding: 2rem;
     color: var(--text-muted);
+}
+
+/* 페이지네이션 */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.page-btn {
+    padding: 0.5rem 1rem;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: rgba(168, 85, 247, 0.1);
+    border-color: var(--neon-purple);
+}
+
+.page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.page-info {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    min-width: 60px;
+    text-align: center;
+}
+
+/* 모달 액션 */
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
 }
 
 /* 단어 설명 모달 */

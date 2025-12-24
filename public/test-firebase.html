@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase 테스트</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a2e;
+            color: #eee;
+        }
+        h1 {
+            color: #a855f7;
+        }
+        button {
+            background: #a855f7;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 10px 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #9333ea;
+        }
+        .result {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        .success {
+            color: #4ade80;
+        }
+        .error {
+            color: #f87171;
+        }
+    </style>
+</head>
+<body>
+    <h1>Firebase 랭킹 시스템 테스트</h1>
+
+    <div>
+        <button onclick="testAuth()">1. 인증 테스트</button>
+        <button onclick="testSubmitRanking()">2. 랭킹 제출 테스트</button>
+        <button onclick="testFetchRankings()">3. 랭킹 조회 테스트</button>
+        <button onclick="clearResults()">결과 지우기</button>
+    </div>
+
+    <div id="result" class="result">테스트 결과가 여기에 표시됩니다.</div>
+
+    <script type="module" src="/js/test-firebase.js"></script>
+</body>
+</html>

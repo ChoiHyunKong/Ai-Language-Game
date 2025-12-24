@@ -1,0 +1,74 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 랭킹 컬렉션 규칙
+    match /rankings/{document} {
+      // 읽기: 모든 사용자 허용 (랭킹 조회)
+      allow read: if true;
+
+      // 쓰기: 인증된 사용자만, 검증 조건 충족 시
+      allow create: if request.auth != null
+        && isValidRanking(request.resource.data)
+        && request.resource.data.userId == request.auth.uid
+        && !isSpamming()
+        && isReasonableScore(request.resource.data);
+
+      // 업데이트 및 삭제 금지
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    // 사용자 통계 컬렉션 (선택적)
+    match /userStats/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if false; // 서버 함수에서만 업데이트
+    }
+
+    // 신고 컬렉션 (부정행위 신고용)
+    match /reports/{document} {
+      allow create: if request.auth != null
+        && request.resource.data.reporterId == request.auth.uid
+        && hasRequiredReportFields(request.resource.data);
+      allow read: if false; // 관리자만 읽기 가능
+      allow update, delete: if false;
+    }
+  }
+
+  // 랭킹 데이터 유효성 검증
+  function isValidRanking(data) {
+    return data.keys().hasAll(['playerName', 'score', 'mode', 'timestamp', 'userId', 'sessionId', 'scoreHash'])
+      && data.playerName is string
+      && data.playerName.size() >= 1
+      && data.playerName.size() <= 20
+      && data.score is int
+      && data.score >= 0
+      && data.score <= 999999 // 최대 점수 제한
+      && data.mode in ['word', 'meaning', 'sentence', 'normal', 'timeAttack', 'practice', 'challenge']
+      && data.timestamp == request.time
+      && data.gameTime is int
+      && data.gameTime >= 10 // 최소 10초 플레이
+      && data.gameTime <= 3600; // 최대 1시간 플레이
+  }
+
+  // 스패밍 방지 (같은 사용자가 30초 내 재제출 금지)
+  function isSpamming() {
+    return exists(/databases/$(database)/documents/rankings/$(request.resource.data.sessionId))
+      || get(/databases/$(database)/documents/rankings/$(request.resource.data.sessionId)).data.timestamp
+         > request.time - duration.value(30, 's');
+  }
+
+  // 합리적인 점수 검증
+  function isReasonableScore(data) {
+    // 시간당 점수 비율 체크 (초당 최대 100점)
+    let maxScore = data.gameTime * 100;
+    return data.score <= maxScore
+      && data.actionCount >= data.score / 100; // 최소한의 액션 수 필요
+  }
+
+  // 신고 필드 검증
+  function hasRequiredReportFields(data) {
+    return data.keys().hasAll(['reporterId', 'reportedId', 'reason', 'timestamp'])
+      && data.reason in ['cheating', 'inappropriate_name', 'suspicious_score']
+      && data.timestamp == request.time;
+  }
+}

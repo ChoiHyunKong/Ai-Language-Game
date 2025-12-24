@@ -1,0 +1,82 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 랭킹 컬렉션 규칙
+    match /rankings/{document} {
+      // 읽기: 모든 사용자 허용 (랭킹 조회)
+      allow read: if true;
+
+      // 쓰기: 인증된 사용자만, 검증 조건 충족 시
+      allow create: if request.auth != null
+        && isValidRanking(request.resource.data)
+        && request.resource.data.userId == request.auth.uid;
+
+      // 업데이트 및 삭제 금지
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+
+  // 랭킹 데이터 유효성 검증
+  function isValidRanking(data) {
+    return hasRequiredFields(data)
+      && isValidPlayerName(data.playerName)
+      && isValidScore(data.score)
+      && isValidMode(data.mode)
+      && isValidGameTime(data.gameTime)
+      && isReasonableScore(data);
+  }
+
+  // 필수 필드 확인
+  function hasRequiredFields(data) {
+    return data.keys().hasAll([
+      'playerName',
+      'score',
+      'mode',
+      'timestamp',
+      'userId',
+      'sessionId',
+      'scoreHash',
+      'gameTime',
+      'actionCount'
+    ]);
+  }
+
+  // 플레이어 이름 검증
+  function isValidPlayerName(name) {
+    return name is string
+      && name.size() >= 1
+      && name.size() <= 20;
+  }
+
+  // 점수 검증 (number 타입, int 대신)
+  function isValidScore(score) {
+    return score is number
+      && score >= 0
+      && score <= 999999;
+  }
+
+  // 게임 모드 검증
+  function isValidMode(mode) {
+    return mode in ['word', 'meaning', 'sentence', 'normal', 'timeAttack', 'practice', 'challenge'];
+  }
+
+  // 게임 시간 검증 (0초도 허용 - 테스트용, 실제로는 최소값 설정 가능)
+  function isValidGameTime(gameTime) {
+    return gameTime is number
+      && gameTime >= 0  // 0 허용 (테스트 시)
+      && gameTime <= 3600;
+  }
+
+  // 합리적인 점수 검증
+  function isReasonableScore(data) {
+    // 시간당 점수 비율 체크 (초당 최대 100점)
+    let maxScorePerSecond = 100;
+    let gameTimeSeconds = data.gameTime > 0 ? data.gameTime : 1; // 0으로 나누기 방지
+    let theoreticalMaxScore = gameTimeSeconds * maxScorePerSecond;
+
+    return data.score <= theoreticalMaxScore
+      && data.actionCount is number
+      && data.actionCount >= 0;
+  }
+}

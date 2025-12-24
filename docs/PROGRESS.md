@@ -55,7 +55,7 @@
 
 ### 1단계: 서버 연동 및 확장 (Upcoming)
 - [x] **Firebase 연동 계획**: [docs/08_FIREBASE_INTEGRATION.md](file:///c:/Users/chyun/OneDrive/바탕 화면/AI 활용/AI Language Game/docs/08_FIREBASE_INTEGRATION.md) 수립.
-- [ ] **Firebase 실전 연동**: 실시간 글로벌 랭킹 시스템 및 DB 구축.
+- [x] **Firebase 실전 연동**: 실시간 글로벌 랭킹 시스템 및 DB 구축.
 - [ ] **PWA 완성**: 오프라인 지원 강화 및 아이콘 최적화.
 
 ### 2단계: SEO 및 마케팅

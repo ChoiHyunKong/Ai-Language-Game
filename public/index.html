@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#a855f7">
-    <title>AI 지식 게임</title>
+    <title>AI 어휘 게임</title>
     <link rel="manifest" href="manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,19 +13,17 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="/js/main.js"></script>
 </head>
 
 <body>
-    <!-- 메인 메뉴 화면 -->
     <div id="menuScreen" class="screen active">
-        <!-- 🆕 애니메이션 배경 -->
         <div class="animated-background">
             <div class="bg-gradient"></div>
             <div class="bg-particles" id="bgParticles"></div>
             <div class="bg-grid"></div>
         </div>
 
-        <!-- 🆕 음소거 토글 버튼 (전역) -->
         <button id="muteBtn" class="mute-btn" title="사운드 켜기/끄기">
             <span id="muteIcon">🔊</span>
         </button>
@@ -39,8 +37,8 @@
                     <label>게임 모드</label>
                     <select id="gameModeSelect">
                         <option value="word">🔤 단어 연습</option>
-                        <option value="meaning">🧠 의미 퀴즈</option>
-                        <option value="sentence">✏️ 문장 완성</option>
+                        <option value="meaning" disabled>🧠 의미 퀴즈 (준비 중)</option>
+                        <option value="sentence" disabled>✏️ 문장 완성 (준비 중)</option>
                     </select>
                 </div>
 
@@ -70,9 +68,7 @@
         </div>
     </div>
 
-    <!-- 게임 화면 -->
     <div id="gameScreen" class="screen">
-        <!-- 상단바 -->
         <div class="top-bar">
             <div class="stat">
                 <span class="stat-icon">🏆</span>
@@ -97,15 +93,12 @@
             <button id="pauseBtn" class="btn-icon">⏸️</button>
         </div>
 
-        <!-- 게임 메인 영역 -->
         <div class="game-main">
-            <!-- 게임 캔버스 영역 -->
             <div class="game-area">
                 <canvas id="gameCanvas"></canvas>
                 <div id="comboPopup" class="combo-popup hidden"></div>
                 <div id="speedUpPopup" class="speed-popup hidden">SPEED UP!</div>
 
-                <!-- 🆕 게임 오버 오버레이 (화면 유지) -->
                 <div id="gameOverOverlay" class="game-over-overlay hidden">
                     <div class="game-over-content">
                         <h2>GAME OVER</h2>
@@ -115,13 +108,11 @@
                 </div>
             </div>
 
-            <!-- 🆕 단어 기록 패널 (우측) -->
             <div class="word-history-panel" id="wordHistoryPanel">
                 <div class="panel-header">
                     <span>📝 입력한 단어</span>
                     <span class="word-count" id="wordCount">0</span>
                 </div>
-                <!-- 🆕 인포 마크 -->
                 <div class="panel-info" id="panelInfo">
                     💡 단어를 클릭하면 설명을 볼 수 있어요!
                 </div>
@@ -131,14 +122,12 @@
             </div>
         </div>
 
-        <!-- 입력 영역 -->
         <div class="input-area">
             <input type="text" id="wordInput" class="word-input" placeholder="단어를 입력하세요..." autocomplete="off"
                 autocapitalize="off" spellcheck="false">
         </div>
     </div>
 
-    <!-- 결과 화면 -->
     <div id="resultScreen" class="screen">
         <div class="result-container">
             <h1 class="result-title">GAME OVER</h1>
@@ -174,18 +163,35 @@
         </div>
     </div>
 
-    <!-- 🆕 랭킹 모달 -->
     <div id="rankingModal" class="overlay hidden">
         <div class="modal-content ranking-modal">
             <h2>🏆 랭킹</h2>
+
+            <div class="difficulty-tabs" id="difficultyTabs">
+                <button class="tab-btn active" data-difficulty="all">전체</button>
+                <button class="tab-btn" data-difficulty="1">⭐X1</button>
+                <button class="tab-btn" data-difficulty="2">⭐X2</button>
+                <button class="tab-btn" data-difficulty="3">⭐X3</button>
+                <button class="tab-btn" data-difficulty="4">⭐X4</button>
+                <button class="tab-btn" data-difficulty="5">⭐X5</button>
+            </div>
+
             <div class="ranking-list" id="rankingList">
                 <div class="ranking-empty">기록이 없습니다</div>
             </div>
-            <button id="closeRankingBtn" class="btn btn-secondary">닫기</button>
+
+            <div class="pagination" id="rankingPagination">
+                <button id="prevPageBtn" class="page-btn" disabled>◀</button>
+                <span id="pageInfo" class="page-info">1 / 1</span>
+                <button id="nextPageBtn" class="page-btn" disabled>▶</button>
+            </div>
+
+            <div class="modal-actions">
+                <button id="closeRankingBtn" class="btn btn-secondary">닫기</button>
+            </div>
         </div>
     </div>
 
-    <!-- 🆕 단어 설명 모달 -->
     <div id="wordDetailModal" class="overlay hidden">
         <div class="modal-content word-detail-modal">
             <h3 id="detailWord">단어</h3>
@@ -194,7 +200,6 @@
         </div>
     </div>
 
-    <!-- 일시정지 오버레이 -->
     <div id="pauseOverlay" class="overlay hidden">
         <div class="overlay-content">
             <h2>일시정지</h2>
@@ -203,7 +208,6 @@
         </div>
     </div>
 
-    <!-- 로딩 화면 -->
     <div id="loadingScreen" class="overlay">
         <div class="loading-content">
             <div class="loader"></div>
@@ -211,9 +215,7 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>
