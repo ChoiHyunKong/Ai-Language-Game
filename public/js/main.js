@@ -36,7 +36,7 @@ class App {
     try {
       this.currentUser = await authenticateUser();
 
-      this.csvLoader = new CSVLoader('data/words.csv', this.languageManager);
+      this.csvLoader = new CSVLoader('/words.csv', this.languageManager);
       await this.csvLoader.load();
 
       this.gameEngine = new GameEngine(

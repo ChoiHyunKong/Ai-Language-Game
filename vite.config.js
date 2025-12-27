@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { copyFileSync, mkdirSync } from 'fs';
 
 export default defineConfig({
   root: 'public',
-  envDir: '../',  // .env 파일을 프로젝트 루트에서 찾도록 설정
-  publicDir: '../assets',
+  envDir: '../',
+  publicDir: './data',
   resolve: {
     alias: {
       '@': resolve(__dirname, './src')
@@ -18,8 +19,11 @@ export default defineConfig({
         main: resolve(__dirname, 'public/index.html'),
         test: resolve(__dirname, 'public/test-firebase.html')
       }
-    }
+    },
+    assetsInclude: ['**/*.csv'],
+    copyPublicDir: true
   },
+  assetsInclude: ['**/*.csv'],
   server: {
     port: 3000,
     open: true
