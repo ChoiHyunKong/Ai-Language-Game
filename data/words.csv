@@ -59,3 +59,93 @@ id,word_ko,word_en,word_jp,meaning_ko,meaning_en,meaning_jp,sentence_ko,sentence
 58,정확도,Accuracy,精度,올바른 예측의 비율,The ratio of correct predictions,正しい予測の割合,모델의 ___가 98%입니다.,The model's ___ is 98%.,モデルの___は98%です。,3,ai_metric
 59,재현율,Recall,再現率,실제 양성 중 올바르게 예측한 비율,The ratio correctly predicted among actual positives,実際の陽性の中で正しく予測した割合,의료 AI는 높은 ___가 중요합니다.,High ___ is important for medical AI.,医療AIには高い___が重要です。,5,ai_metric
 60,정밀도,Precision,精度,예측한 양성 중 실제 양성의 비율,The ratio of actual positives among predicted positives,予測した陽性の中で実際の陽性の割合,스팸 필터는 높은 ___가 필요합니다.,Spam filters need high ___.,スパムフィルターには高い___が必要です。,5,ai_metric
+61,클로드,Claude,Claude,Anthropic이 개발한 대화형 AI 모델,A conversational AI model developed by Anthropic,Anthropicが開発した対話型AIモデル,___는 긴 대화를 잘 이해합니다.,___ understands long conversations well.,___は長い会話をよく理解します。,2,ai_model
+62,지피티,GPT,GPT,OpenAI의 생성형 언어 모델,OpenAI's generative language model,OpenAIの生成言語モデル,___-4는 다양한 작업을 수행합니다.,___-4 performs various tasks.,___-4は様々なタスクを実行します。,2,ai_model
+63,제미나이,Gemini,Gemini,Google의 멀티모달 AI 모델,Google's multimodal AI model,GoogleのマルチモーダルAIモデル,___는 이미지와 텍스트를 함께 처리합니다.,___ processes images and text together.,___は画像とテキストを一緒に処理します。,3,ai_model
+64,미드저니,Midjourney,Midjourney,텍스트로 이미지를 생성하는 AI,An AI that generates images from text,テキストで画像を生成するAI,___로 예술 작품을 만듭니다.,We create artwork with ___.,___で芸術作品を作ります。,2,ai_model
+65,스테이블디퓨전,Stable Diffusion,Stable Diffusion,오픈소스 이미지 생성 AI 모델,An open-source image generation AI model,オープンソース画像生成AIモデル,___은 로컬에서 실행 가능합니다.,___ can run locally.,___はローカルで実行可能です。,3,ai_model
+66,달리,DALL-E,DALL-E,OpenAI의 이미지 생성 AI,OpenAI's image generation AI,OpenAIの画像生成AI,___로 창의적인 이미지를 만듭니다.,We create creative images with ___.,___で創造的な画像を作ります。,2,ai_model
+67,리액트,React,React,페이스북이 만든 UI 라이브러리,A UI library created by Facebook,Facebookが作ったUIライブラリ,___로 인터랙티브한 웹을 만듭니다.,We build interactive webs with ___.,___でインタラクティブなWebを作ります。,3,dev_framework
+68,뷰,Vue,Vue,프로그레시브 자바스크립트 프레임워크,A progressive JavaScript framework,プログレッシブJavaScriptフレームワーク,___는 배우기 쉬운 프레임워크입니다.,___ is an easy-to-learn framework.,___は学びやすいフレームワークです。,3,dev_framework
+69,앵귤러,Angular,Angular,구글이 만든 웹 프레임워크,A web framework created by Google,Googleが作ったWebフレームワーク,___는 엔터프라이즈 앱에 적합합니다.,___ is suitable for enterprise apps.,___はエンタープライズアプリに適しています。,4,dev_framework
+70,노드,Node,Node,자바스크립트 실행 환경,A JavaScript runtime environment,JavaScript実行環境,___로 서버를 구축합니다.,We build servers with ___.,___でサーバーを構築します。,3,dev_runtime
+71,타입스크립트,TypeScript,TypeScript,타입을 추가한 자바스크립트,JavaScript with added types,型を追加したJavaScript,___로 안전한 코드를 작성합니다.,We write safe code with ___.,___で安全なコードを作成します。,3,dev_language
+72,그리드,Grid,Grid,2차원 레이아웃 시스템,A two-dimensional layout system,2次元レイアウトシステム,CSS ___로 복잡한 레이아웃을 만듭니다.,We create complex layouts with CSS ___.,CSS___で複雑なレイアウトを作ります。,4,dev_css
+73,플렉스박스,Flexbox,Flexbox,1차원 레이아웃 모델,A one-dimensional layout model,1次元レイアウトモデル,___로 요소를 정렬합니다.,We align elements with ___.,___で要素を整列します。,3,dev_css
+74,반응형,Responsive,レスポンシブ,다양한 화면 크기에 대응하는 디자인,Design that adapts to various screen sizes,様々な画面サイズに対応するデザイン,___웹은 모바일에서도 잘 보입니다.,___ web looks good on mobile too.,___Webはモバイルでもよく見えます。,3,dev_design
+75,페이지네이션,Pagination,ページネーション,데이터를 페이지로 나누는 기법,A technique to divide data into pages,データをページに分ける技法,___으로 대량 데이터를 표시합니다.,We display large data with ___.,___で大量データを表示します。,3,dev_feature
+76,깃,Git,Git,분산 버전 관리 시스템,A distributed version control system,分散バージョン管理システム,___으로 코드 변경을 추적합니다.,We track code changes with ___.,___でコード変更を追跡します。,2,dev_tool
+77,깃허브,GitHub,GitHub,Git 기반 협업 플랫폼,A Git-based collaboration platform,Gitベースの協業プラットフォーム,___에서 오픈소스를 공유합니다.,We share open source on ___.,___でオープンソースを共有します。,2,dev_platform
+78,도커,Docker,Docker,컨테이너 가상화 플랫폼,A container virtualization platform,コンテナ仮想化プラットフォーム,___로 일관된 환경을 제공합니다.,We provide consistent environment with ___.,___で一貫した環境を提供します。,4,dev_tool
+79,쿠버네티스,Kubernetes,Kubernetes,컨테이너 오케스트레이션 도구,A container orchestration tool,コンテナオーケストレーションツール,___로 대규모 배포를 관리합니다.,We manage large-scale deployment with ___.,___で大規模デプロイを管理します。,5,dev_tool
+80,웹팩,Webpack,Webpack,모듈 번들러 도구,A module bundler tool,モジュールバンドラーツール,___로 자바스크립트를 최적화합니다.,We optimize JavaScript with ___.,___でJavaScriptを最適化します。,4,dev_tool
+81,바이트,Vite,Vite,빠른 빌드 도구,A fast build tool,速いビルドツール,___는 개발 서버가 매우 빠릅니다.,___ has a very fast dev server.,___は開発サーバーが非常に速いです。,3,dev_tool
+82,테일윈드,Tailwind,Tailwind,유틸리티 우선 CSS 프레임워크,A utility-first CSS framework,ユーティリティ優先CSSフレームワーク,___로 빠르게 스타일링합니다.,We style quickly with ___.,___で素早くスタイリングします。,3,dev_framework
+83,부트스트랩,Bootstrap,Bootstrap,반응형 디자인 프레임워크,A responsive design framework,レスポンシブデザインフレームワーク,___로 빠르게 UI를 구축합니다.,We build UI quickly with ___.,___で素早くUIを構築します。,2,dev_framework
+84,리덕스,Redux,Redux,상태 관리 라이브러리,A state management library,状態管理ライブラリ,___로 전역 상태를 관리합니다.,We manage global state with ___.,___でグローバル状態を管理します。,4,dev_library
+85,넥스트,Next,Next,리액트 기반 풀스택 프레임워크,A React-based fullstack framework,Reactベースのフルスタックフレームワーク,___로 SEO 최적화된 웹을 만듭니다.,We create SEO-optimized web with ___.,___でSEO最適化されたWebを作ります。,4,dev_framework
+86,넉스트,Nuxt,Nuxt,뷰 기반 프레임워크,A Vue-based framework,Vueベースのフレームワーク,___로 서버 사이드 렌더링을 합니다.,We do server-side rendering with ___.,___でサーバーサイドレンダリングをします。,4,dev_framework
+87,라라벨,Laravel,Laravel,PHP 웹 프레임워크,A PHP web framework,PHP Webフレームワーク,___로 백엔드를 빠르게 개발합니다.,We develop backend quickly with ___.,___でバックエンドを素早く開発します。,4,dev_framework
+88,장고,Django,Django,파이썬 웹 프레임워크,A Python web framework,Python Webフレームワーク,___는 관리자 페이지를 자동 생성합니다.,___ auto-generates admin pages.,___は管理者ページを自動生成します。,4,dev_framework
+89,플라스크,Flask,Flask,경량 파이썬 웹 프레임워크,A lightweight Python web framework,軽量Python Webフレームワーク,___로 간단한 API를 만듭니다.,We create simple APIs with ___.,___でシンプルなAPIを作ります。,3,dev_framework
+90,익스프레스,Express,Express,노드 기반 웹 프레임워크,A Node-based web framework,Nodeベースのwebフレームワーク,___로 RESTful API를 구축합니다.,We build RESTful API with ___.,___でRESTful APIを構築します。,3,dev_framework
+91,몽고DB,MongoDB,MongoDB,NoSQL 문서 데이터베이스,A NoSQL document database,NoSQLドキュメントデータベース,___는 유연한 스키마를 제공합니다.,___ provides flexible schema.,___は柔軟なスキーマを提供します。,3,dev_database
+92,포스트그레스,PostgreSQL,PostgreSQL,오픈소스 관계형 데이터베이스,An open-source relational database,オープンソース関係データベース,___는 복잡한 쿼리를 지원합니다.,___ supports complex queries.,___は複雑なクエリをサポートします。,4,dev_database
+93,마이SQL,MySQL,MySQL,널리 사용되는 관계형 데이터베이스,A widely-used relational database,広く使用される関係データベース,___로 데이터를 안전하게 저장합니다.,We securely store data with ___.,___でデータを安全に保存します。,3,dev_database
+94,레디스,Redis,Redis,인메모리 데이터 저장소,An in-memory data store,インメモリデータストア,___로 캐싱을 구현합니다.,We implement caching with ___.,___でキャッシングを実装します。,4,dev_database
+95,그래프큐엘,GraphQL,GraphQL,API 쿼리 언어,An API query language,APIクエリ言語,___로 필요한 데이터만 요청합니다.,We request only needed data with ___.,___で必要なデータだけを要求します。,4,dev_api
+96,레스트,REST,REST,웹 서비스 아키텍처 스타일,A web service architectural style,Webサービスアーキテクチャスタイル,___ API는 HTTP 메서드를 사용합니다.,___ API uses HTTP methods.,___ APIはHTTPメソッドを使用します。,3,dev_api
+97,웹소켓,WebSocket,WebSocket,양방향 실시간 통신 프로토콜,A bidirectional real-time communication protocol,双方向リアルタイム通信プロトコル,___로 채팅 기능을 구현합니다.,We implement chat features with ___.,___でチャット機能を実装します。,4,dev_protocol
+98,제이슨,JSON,JSON,데이터 교환 형식,A data interchange format,データ交換フォーマット,___으로 데이터를 전송합니다.,We transmit data with ___.,___でデータを送信します。,2,dev_format
+99,에이잭스,AJAX,AJAX,비동기 웹 통신 기술,Asynchronous web communication technology,非同期Web通信技術,___로 페이지 새로고침 없이 데이터를 받습니다.,We receive data without page refresh with ___.,___でページリフレッシュなしでデータを受け取ります。,3,dev_technique
+100,프로미스,Promise,Promise,비동기 작업 처리 객체,An object for handling asynchronous operations,非同期作業処理オブジェクト,___로 비동기 코드를 관리합니다.,We manage async code with ___.,___で非同期コードを管理します。,4,dev_concept
+101,어싱크,Async,Async,비동기 함수 선언 키워드,A keyword for declaring async functions,非同期関数宣言キーワード,___/await로 비동기를 동기처럼 작성합니다.,We write async like sync with ___/await.,___/awaitで非同期を同期のように書きます。,4,dev_concept
+102,젠킨스,Jenkins,Jenkins,지속적 통합 도구,A continuous integration tool,継続的統合ツール,___로 자동 배포를 설정합니다.,We set up auto deployment with ___.,___で自動デプロイを設定します。,4,dev_tool
+103,카프카,Kafka,Kafka,분산 스트리밍 플랫폼,A distributed streaming platform,分散ストリーミングプラットフォーム,___로 실시간 데이터를 처리합니다.,We process real-time data with ___.,___でリアルタイムデータを処理します。,5,dev_tool
+104,엘라스틱서치,Elasticsearch,Elasticsearch,분산 검색 엔진,A distributed search engine,分散検索エンジン,___로 빠른 검색을 제공합니다.,We provide fast search with ___.,___で速い検索を提供します。,4,dev_tool
+105,엔지닉스,Nginx,Nginx,고성능 웹 서버,A high-performance web server,高性能Webサーバー,___로 정적 파일을 서빙합니다.,We serve static files with ___.,___で静的ファイルを配信します。,3,dev_server
+106,아파치,Apache,Apache,오픈소스 웹 서버,An open-source web server,オープンソースWebサーバー,___는 가장 널리 사용되는 서버입니다.,___ is the most widely used server.,___は最も広く使用されるサーバーです。,3,dev_server
+107,스웨거,Swagger,Swagger,API 문서화 도구,An API documentation tool,APIドキュメント化ツール,___로 API 명세를 작성합니다.,We write API specs with ___.,___でAPI仕様を作成します。,3,dev_tool
+108,포스트맨,Postman,Postman,API 테스트 도구,An API testing tool,APIテストツール,___로 API를 테스트합니다.,We test APIs with ___.,___でAPIをテストします。,2,dev_tool
+109,제스트,Jest,Jest,자바스크립트 테스트 프레임워크,A JavaScript testing framework,JavaScriptテストフレームワーク,___로 유닛 테스트를 작성합니다.,We write unit tests with ___.,___でユニットテストを作成します。,3,dev_testing
+110,사이프레스,Cypress,Cypress,E2E 테스트 프레임워크,An E2E testing framework,E2Eテストフレームワーク,___로 UI 테스트를 자동화합니다.,We automate UI tests with ___.,___でUIテストを自動化します。,4,dev_testing
+111,라마,LLaMA,LLaMA,메타의 오픈소스 LLM,Meta's open-source LLM,MetaのオープンソースLLM,___는 메타가 공개한 언어 모델입니다.,___ is a language model released by Meta.,___はMetaが公開した言語モデルです。,4,ai_model
+112,미스트랄,Mistral,Mistral,유럽의 오픈소스 AI 모델,Europe's open-source AI model,ヨーロッパのオープンソースAIモデル,___는 프랑스의 AI 스타트업입니다.,___ is a French AI startup.,___はフランスのAIスタートアップです。,4,ai_model
+113,안트로픽,Anthropic,Anthropic,클로드 개발사,Developer of Claude,Claudeの開発会社,___는 클로드를 만든 회사입니다.,___ is the company that created Claude.,___はClaudeを作った会社です。,3,ai_company
+114,코히어,Cohere,Cohere,엔터프라이즈 AI 플랫폼,Enterprise AI platform,エンタープライズAIプラットフォーム,___는 기업용 AI 솔루션을 제공합니다.,___ provides enterprise AI solutions.,___は企業向けAIソリューションを提供します。,4,ai_company
+115,허깅페이스,Hugging Face,Hugging Face,AI 모델 공유 플랫폼,AI model sharing platform,AIモデル共有プラットフォーム,___는 오픈소스 모델 허브입니다.,___ is an open-source model hub.,___はオープンソースモデルハブです。,3,ai_platform
+116,텐서플로,TensorFlow,TensorFlow,구글의 ML 프레임워크,Google's ML framework,GoogleのMLフレームワーク,___는 딥러닝 프레임워크입니다.,___ is a deep learning framework.,___はディープラーニングフレームワークです。,3,ai_framework
+117,파이토치,PyTorch,PyTorch,메타의 ML 프레임워크,Meta's ML framework,MetaのMLフレームワーク,___는 연구자들이 선호하는 프레임워크입니다.,___ is the preferred framework for researchers.,___は研究者が好むフレームワークです。,3,ai_framework
+118,버트,BERT,BERT,구글의 언어 모델,Google's language model,Googleの言語モデル,___는 자연어 이해 모델입니다.,___ is a natural language understanding model.,___は自然言語理解モデルです。,4,ai_model
+119,티파이브,T5,T5,텍스트 투 텍스트 모델,Text-to-text model,テキストtoテキストモデル,___는 구글의 언어 모델입니다.,___ is Google's language model.,___はGoogleの言語モデルです。,4,ai_model
+120,일렉트라,ELECTRA,ELECTRA,효율적인 사전학습 모델,Efficient pre-training model,効率的な事前学習モデル,___는 BERT보다 효율적입니다.,___ is more efficient than BERT.,___はBERTより効率的です。,5,ai_model
+121,알버트,ALBERT,ALBERT,경량화된 BERT 모델,Lightweight BERT model,軽量化されたBERTモデル,___는 파라미터가 적은 모델입니다.,___ is a model with fewer parameters.,___はパラメータが少ないモデルです。,5,ai_model
+122,로버타,RoBERTa,RoBERTa,강건한 BERT 모델,Robust BERT model,堅牢なBERTモデル,___는 BERT를 개선한 모델입니다.,___ is an improved version of BERT.,___はBERTを改善したモデルです。,5,ai_model
+123,디스틸버트,DistilBERT,DistilBERT,압축된 BERT 모델,Compressed BERT model,圧縮されたBERTモデル,___는 BERT의 40% 크기입니다.,___ is 40% the size of BERT.,___はBERTの40%のサイズです。,5,ai_model
+124,지피티2,GPT-2,GPT-2,오픈AI의 언어 모델,OpenAI's language model,OpenAIの言語モデル,___는 GPT 시리즈의 2세대입니다.,___ is the 2nd generation of GPT.,___はGPTシリーズの第2世代です。,4,ai_model
+125,지피티3,GPT-3,GPT-3,대규모 언어 모델,Large language model,大規模言語モデル,___는 1750억 파라미터를 가집니다.,___ has 175 billion parameters.,___は1750億パラメータを持ちます。,4,ai_model
+126,코덱스,Codex,Codex,코드 생성 AI 모델,Code generation AI model,コード生成AIモデル,___는 깃허브 코파일럿의 기반입니다.,___ is the foundation of GitHub Copilot.,___はGitHub Copilotの基盤です。,4,ai_model
+127,위스퍼,Whisper,Whisper,음성 인식 AI,Speech recognition AI,音声認識AI,___는 오픈AI의 음성 모델입니다.,___ is OpenAI's speech model.,___はOpenAIの音声モデルです。,3,ai_model
+128,클립,CLIP,CLIP,이미지-텍스트 모델,Image-text model,画像テキストモデル,___는 이미지를 이해하는 모델입니다.,___ is a model that understands images.,___は画像を理解するモデルです。,4,ai_model
+129,얄로,YOLO,YOLO,실시간 객체 탐지,Real-time object detection,リアルタイム物体検出,___는 빠른 객체 인식 알고리즘입니다.,___ is a fast object detection algorithm.,___は高速物体認識アルゴリズムです。,3,ai_algorithm
+130,알파고,AlphaGo,AlphaGo,바둑 AI,Go playing AI,囲碁AI,___는 이세돌을 이긴 AI입니다.,___ is the AI that beat Lee Sedol.,___は李世ドルに勝ったAIです。,2,ai_model
+131,알파폴드,AlphaFold,AlphaFold,단백질 구조 예측 AI,Protein structure prediction AI,タンパク質構造予測AI,___는 단백질 접힘을 예측합니다.,___ predicts protein folding.,___はタンパク質の折りたたみを予測します。,5,ai_model
+132,트랜스포머,Transformer,Transformer,어텐션 메커니즘 아키텍처,Attention mechanism architecture,アテンションメカニズムアーキテクチャ,___는 현대 AI의 핵심 구조입니다.,___ is the core structure of modern AI.,___は現代AIの核心構造です。,4,ai_architecture
+133,갠,GAN,GAN,생성적 적대 신경망,Generative Adversarial Network,敵対的生成ネットワーク,___는 이미지를 생성하는 기술입니다.,___ is technology that generates images.,___は画像を生成する技術です。,4,ai_architecture
+134,브이에이이,VAE,VAE,변분 오토인코더,Variational Autoencoder,変分オートエンコーダー,___는 잠재 공간을 학습합니다.,___ learns latent space.,___は潜在空間を学習します。,5,ai_architecture
+135,알엔엔,RNN,RNN,순환 신경망,Recurrent Neural Network,再帰型ニューラルネットワーク,___는 시퀀스 데이터를 처리합니다.,___ processes sequence data.,___はシーケンスデータを処理します。,4,ai_architecture
+136,엘에스티엠,LSTM,LSTM,장단기 메모리 네트워크,Long Short-Term Memory,長短期記憶ネットワーク,___는 RNN의 개선 버전입니다.,___ is an improved version of RNN.,___はRNNの改良版です。,5,ai_architecture
+137,시엔엔,CNN,CNN,합성곱 신경망,Convolutional Neural Network,畳み込みニューラルネットワーク,___는 이미지 인식에 사용됩니다.,___ is used for image recognition.,___は画像認識に使用されます。,4,ai_architecture
+138,레스넷,ResNet,ResNet,잔차 신경망,Residual Neural Network,残差ニューラルネットワーク,___는 깊은 네트워크를 학습합니다.,___ trains deep networks.,___は深いネットワークを学習します。,5,ai_architecture
+139,유넷,U-Net,U-Net,이미지 분할 아키텍처,Image segmentation architecture,画像分割アーキテクチャ,___는 의료 이미지에 사용됩니다.,___ is used for medical images.,___は医療画像に使用されます。,5,ai_architecture
+140,비전트랜스포머,Vision Transformer,Vision Transformer,이미지용 트랜스포머,Transformer for images,画像用Transformer,___는 이미지를 패치로 나눕니다.,___ divides images into patches.,___は画像をパッチに分割します。,5,ai_model
+141,사지메이커,SageMaker,SageMaker,AWS의 ML 플랫폼,AWS ML platform,AWSのMLプラットフォーム,___는 아마존의 머신러닝 서비스입니다.,___ is Amazon's machine learning service.,___はAmazonの機械学習サービスです。,4,ai_platform
+142,버텍스에이아이,Vertex AI,Vertex AI,구글의 ML 플랫폼,Google's ML platform,GoogleのMLプラットフォーム,___는 구글 클라우드의 AI 서비스입니다.,___ is Google Cloud's AI service.,___はGoogle CloudのAIサービスです。,4,ai_platform
+143,에저머신러닝,Azure ML,Azure ML,마이크로소프트의 ML 플랫폼,Microsoft's ML platform,MicrosoftのMLプラットフォーム,___는 마이크로소프트의 AI 서비스입니다.,___ is Microsoft's AI service.,___はMicrosoftのAIサービスです。,4,ai_platform
+144,랭체인,LangChain,LangChain,LLM 애플리케이션 프레임워크,LLM application framework,LLMアプリケーションフレームワーク,___는 LLM 앱 개발 도구입니다.,___ is an LLM app development tool.,___はLLMアプリ開発ツールです。,4,ai_framework
+145,라마인덱스,LlamaIndex,LlamaIndex,데이터 프레임워크,Data framework,データフレームワーク,___는 LLM과 데이터를 연결합니다.,___ connects LLMs with data.,___はLLMとデータを接続します。,5,ai_framework
+146,벡터디비,VectorDB,VectorDB,벡터 데이터베이스,Vector database,ベクターデータベース,___는 임베딩을 저장합니다.,___ stores embeddings.,___は埋め込みを保存します。,5,ai_database
+147,파인콘,Pinecone,Pinecone,벡터 데이터베이스 서비스,Vector database service,ベクターデータベースサービス,___는 유사도 검색을 제공합니다.,___ provides similarity search.,___は類似度検索を提供します。,5,ai_database
+148,크로마,Chroma,Chroma,오픈소스 벡터 DB,Open-source vector DB,オープンソースベクターDB,___는 임베딩 저장소입니다.,___ is an embedding store.,___は埋め込みストレージです。,5,ai_database
+149,와비브,Weaviate,Weaviate,벡터 검색 엔진,Vector search engine,ベクター検索エンジン,___는 의미 검색을 지원합니다.,___ supports semantic search.,___はセマンティック検索をサポートします。,5,ai_database
+150,프롬프트엔지니어링,Prompt Engineering,Prompt Engineering,프롬프트 설계 기법,Prompt design technique,プロンプト設計技法,___는 AI와 대화하는 기술입니다.,___ is the skill of conversing with AI.,___はAIと会話する技術です。,3,ai_concept

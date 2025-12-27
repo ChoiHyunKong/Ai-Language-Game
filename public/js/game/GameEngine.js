@@ -332,8 +332,8 @@ export class GameEngine {
             this.combo = 0;
             this.comboMultiplier = 1.0;
 
-            this.score = Math.max(0, this.score - 1000);
-            this.showMilestonePopup('WRONG -1000', '#ef4444');
+            this.score = Math.max(0, this.score - 500);
+            this.showMilestonePopup('WRONG -500', '#ef4444');
 
             this.onScoreUpdate?.(this.score, this.combo);
 
@@ -377,8 +377,9 @@ export class GameEngine {
             this.score += baseScore;
         } else {
             if (this.isFeverTime) {
-                scoreChange = 500;
-                this.score += 500;
+                scoreChange = Math.floor(500 * this.comboMultiplier);
+                this.score += scoreChange;
+                this.showMilestonePopup(`FEVER +${scoreChange}!`, '#ff00ff');
             } else {
                 let baseScore = this.calculateBaseScore(this.difficulty);
 
