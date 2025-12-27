@@ -17,7 +17,6 @@ export class CSVLoader {
                 skipEmptyLines: true,
                 complete: (results) => {
                     this.data = results.data.filter(row => row.id);
-                    console.log(`📊 ${this.data.length}개 단어 로드됨`);
                     resolve(this.data);
                 },
                 error: (error) => {

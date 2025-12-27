@@ -18,9 +18,8 @@ export class SoundManager {
         try {
             this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
             this.initialized = true;
-            console.log('🔊 사운드 시스템 초기화 완료');
         } catch (e) {
-            console.warn('사운드 초기화 실패:', e);
+            // 사운드 초기화 실패 시 무시
         }
     }
 
