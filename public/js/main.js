@@ -34,7 +34,12 @@ class App {
 
   async init() {
     try {
-      this.currentUser = await authenticateUser();
+      // Firebase 인증 시도 (실패해도 게임은 진행)
+      try {
+        this.currentUser = await authenticateUser();
+      } catch (authError) {
+        console.warn('Firebase 인증 실패, 로컬 모드로 진행:', authError);
+      }
 
       this.csvLoader = new CSVLoader('/words.csv', this.languageManager);
       await this.csvLoader.load();
@@ -50,6 +55,7 @@ class App {
 
       document.getElementById('loadingScreen').classList.add('hidden');
     } catch (error) {
+      console.error('초기화 실패:', error);
       document.getElementById('loadingText').textContent = '로딩 실패. 새로고침해주세요.';
     }
   }
@@ -428,30 +434,21 @@ class App {
     try {
       const records = await fetchRankings('all', 'all');
       this.allRankings = records;
-
-      this.currentPage = 1;
-      this.currentDifficulty = 'all';
-
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.difficulty === 'all');
-      });
-
-      this.renderRankings();
-
-      document.getElementById('rankingModal').classList.remove('hidden');
     } catch (error) {
+      console.error('랭킹 조회 실패, 로컬 데이터 사용:', error);
       const records = this.scoreManager.getTopRecords(100);
       this.allRankings = records;
-      this.currentPage = 1;
-      this.currentDifficulty = 'all';
-
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.difficulty === 'all');
-      });
-
-      this.renderRankings();
-      document.getElementById('rankingModal').classList.remove('hidden');
     }
+
+    this.currentPage = 1;
+    this.currentDifficulty = 'all';
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.difficulty === 'all');
+    });
+
+    this.renderRankings();
+    document.getElementById('rankingModal').classList.remove('hidden');
   }
 
   showMenu() {
